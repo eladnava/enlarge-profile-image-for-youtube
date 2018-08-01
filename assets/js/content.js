@@ -1,6 +1,6 @@
 // Define search and replace terms for image src link
 let search = /\/s[0-9]+/g;
-let replace = 's512';
+let replace = '/s512';
 
 function getProfileImageContainer() {
     // Get profile image containers
