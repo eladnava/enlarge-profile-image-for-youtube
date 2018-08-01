@@ -1,18 +1,18 @@
 // Define search and replace terms for image src link
-var search = "s100";
-var replace = "s512";
+var search = /s[0-9]+/g;
+var replace = 's512';
 
 function getProfileImageContainer() {
     // Get profile image containers
-    return $(".channel-header-profile-image-container");
+    return $('#channel-header-container');
 }
 
 function getProfileImage(container) {
     // Get profile image tag
-    return container.find("img");
+    return container.find('img');
 }
 
-function injectEnlargeLink() {
+function wrapEnlargeLink() {
     // Get profile image link
     var imageContainer = getProfileImageContainer();
 
@@ -21,7 +21,7 @@ function injectEnlargeLink() {
         return;
     }
 
-    // Get img tag
+    // Get img tag nested within container
     var imageTag = getProfileImage(imageContainer);
 
     // No tag?
@@ -29,18 +29,15 @@ function injectEnlargeLink() {
         return;
     }
 
-    // Get image src
+    // Get image src URL
     var src = imageTag.attr('src');
 
-    // Replace image pixel value in URL
+    // Replace image pixel value in URL for a larger 512px image
     src = src.replace(search, replace);
 
-    // Set link to point to the larger image
-    imageContainer.attr('href', src);
-
-    // Open in a new tab
-    imageContainer.attr('target', '_blank');
+    // Wrap image tag with a link that points to the larger image
+    $( imageTag ).wrap( "<a href='" + src + "' target='_blank'></a>" );
 }
 
 // One-time injection
-injectEnlargeLink();
+wrapEnlargeLink();
