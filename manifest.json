@@ -2,7 +2,7 @@
     "name": "Enlarge Profile Image for YouTube™",
     "description": "A chrome extension that makes it possible to enlarge the profile image in YouTube profiles by clicking on it.",
     "manifest_version": 2,
-    "version": "1.0",
+    "version": "1.0.1",
     "icons":
     {
         "16": "assets/img/icon16.png",
