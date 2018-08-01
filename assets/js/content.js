@@ -1,6 +1,6 @@
 // Define search and replace terms for image src link
-var search = /s[0-9]+/g;
-var replace = 's512';
+let search = /s[0-9]+/g;
+let replace = 's512';
 
 function getProfileImageContainer() {
     // Get profile image containers
@@ -14,7 +14,7 @@ function getProfileImage(container) {
 
 function wrapEnlargeLink() {
     // Get profile image link
-    var imageContainer = getProfileImageContainer();
+    let imageContainer = getProfileImageContainer();
 
     // No image?
     if (!imageContainer.length) {
@@ -22,7 +22,7 @@ function wrapEnlargeLink() {
     }
 
     // Get img tag nested within container
-    var imageTag = getProfileImage(imageContainer);
+    let imageTag = getProfileImage(imageContainer);
 
     // No tag?
     if (!imageTag.length) {
@@ -30,7 +30,7 @@ function wrapEnlargeLink() {
     }
 
     // Get image src URL
-    var src = imageTag.attr('src');
+    let src = imageTag.attr('src');
 
     // Replace image pixel value in URL for a larger 512px image
     src = src.replace(search, replace);
