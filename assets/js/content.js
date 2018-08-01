@@ -35,9 +35,17 @@ function wrapEnlargeLink() {
     // Replace image pixel value in URL for a larger 512px image
     src = src.replace(search, replace);
 
-    // Wrap image tag with a link that points to the larger image
-    $( imageTag ).wrap( "<a href='" + src + "' target='_blank'></a>" );
+    // Already wrapped in a link?
+    if (imageTag.parent().is('a')) {
+        // Modify its src
+        imageTag.parent().attr('href', src);
+    }
+    else {
+        // Wrap image tag with a link that points to the larger image
+        $( imageTag ).wrap( "<a href='" + src + "' target='_blank'></a>" );
+    }
 }
 
-// One-time injection
-wrapEnlargeLink();
+// Ugly hack
+// TODO: Find a cleaner way to do this
+setInterval(wrapEnlargeLink, 100);
