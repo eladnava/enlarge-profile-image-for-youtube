@@ -1,6 +1,6 @@
 // Define search and replace terms for image src link
-let search = /\/s[0-9]+/g;
-let replace = '/s512';
+let search = /s[0-9]+\-/g;
+let replace = 's512-';
 
 function getProfileImageContainer() {
     // Get profile image containers
@@ -32,6 +32,11 @@ function wrapEnlargeLink() {
     // Get image src URL
     let src = imageTag.attr('src');
 
+    // Source not set yet?
+    if (!src) {
+        return;
+    }
+
     // Replace image pixel value in URL for a larger 512px image
     src = src.replace(search, replace);
 
@@ -48,4 +53,4 @@ function wrapEnlargeLink() {
 
 // Ugly hack
 // TODO: Find a cleaner way to do this
-setInterval(wrapEnlargeLink, 100);
+setInterval(wrapEnlargeLink, 500);
