@@ -2,27 +2,14 @@
 let search = /s[0-9]+\-/g;
 let replace = 's512-';
 
-function getProfileImageContainer() {
-    // Get profile image containers
-    return $('#channel-header-container');
-}
-
 function getProfileImage(container) {
     // Get profile image tag
-    return container.find('img');
+    return $('.yt-core-image');
 }
 
 function wrapEnlargeLink() {
-    // Get profile image link
-    let imageContainer = getProfileImageContainer();
-
-    // No image?
-    if (!imageContainer.length) {
-        return;
-    }
-
     // Get img tag nested within container
-    let imageTag = getProfileImage(imageContainer);
+    let imageTag = getProfileImage();
 
     // No tag?
     if (!imageTag.length) {
@@ -47,7 +34,7 @@ function wrapEnlargeLink() {
     }
     else {
         // Wrap image tag with a link that points to the larger image
-        $( imageTag ).wrap( "<a href='" + src + "' target='_blank'></a>" );
+        $(imageTag).wrap( "<a href='" + src + "' target='_blank'></a>" );
     }
 }
 
